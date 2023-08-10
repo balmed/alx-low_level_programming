@@ -1,6 +1,10 @@
 #include<stdio.h>
 /**
-*C program the function printf return 0
+*main -Entry point
+*
+*Description: C program the function printf.
+*
+*Return:Always 0 (Success)
 */
 
 int mian(void)

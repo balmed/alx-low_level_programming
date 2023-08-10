@@ -1,6 +1,10 @@
 #include<stdio.h>
 /**
-*C program the function puts return 0
+*mian -Entry point
+*
+*Desciption: C program the function puts
+*
+*Return: alawys 0 (Success)
 */
 
 int mian(void)
