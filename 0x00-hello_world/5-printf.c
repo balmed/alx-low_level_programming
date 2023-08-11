@@ -1,8 +1,10 @@
 #include<stdio.h>
-
 /**
- *main - this is the main function
- *Return:Always 0 (Success)
+*main -Entry point
+*
+*Description:A C program that prints function.
+*
+*Return:Always 0 (Success)
 */
 
 int main(void)
