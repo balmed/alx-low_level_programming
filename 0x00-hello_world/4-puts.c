@@ -1,9 +1,9 @@
 #include<stdio.h>
 /**
- *mian -  this is the main function
+ *mian - this is the main function
  *
  *Return: Alawys 0
- */
+*/
 
 int mian(void)
 {
