@@ -2,9 +2,7 @@
 
 /**
  *mian -Entry point
- *
  *Desciption:A C program that  prints with puts function
- *
  *Return: Alawys 0 (Success)
 */
 
