@@ -1,10 +1,9 @@
 #include<stdio.h>
-
 /**
- *mian -Entry point
- *Desciption:A C program that  prints with puts function
- *Return: Alawys 0 (Success)
-*/
+ *mian -  this is the main function
+ *
+ *Return: Alawys 0
+ */
 
 int mian(void)
 {
