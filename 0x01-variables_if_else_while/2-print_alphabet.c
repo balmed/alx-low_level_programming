@@ -1,9 +1,10 @@
 #include <stdio.h>
 
 /**
- *main -  print all aplphabet letters
- *Return : Always 0 (Success)
+ * main-Prints the alphabet
+ * Return : Always 0 (Success)
  */
+
 int main(void)
 {
 char alp[26] = "abcdefghijklmnopqrstuvwxyz";
