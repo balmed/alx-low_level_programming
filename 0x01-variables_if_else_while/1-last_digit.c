@@ -4,7 +4,7 @@
 /**
  * main - Entry point
  *
- * Description: Prints Prints if number is last_digit.
+ * Description: Prints if number is last_digit.
  *
  * Return: Always 0 (Success)
  */
