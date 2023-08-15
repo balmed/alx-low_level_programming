@@ -12,11 +12,14 @@ int di1 = 0, di2;
 while (di1 <= 9)
 {di2 = 0;
 while (di2 <= 9)
-{if (di1 != di2 && di1 < di2)
-{putchar(di1 + 48);
+{
+if (di1 != di2 && di1 < di2)
+{
+putchar(di1 + 48);
 putchar(di2 + 48);
 if (di1 + di2 != 17)
-{putchar(',');
+{
+putchar(',');
 putchar(' ');
 }
 }
