@@ -2,7 +2,7 @@
 /**
  * main - Entry point
  *
- * Description: Prints all possible combinations of single digit numbers.
+ * Description: Prints all possible combinations oo two digit numbers.
  *
  * Return: Always 0 (Success)
  */
