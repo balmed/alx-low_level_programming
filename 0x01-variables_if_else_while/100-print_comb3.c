@@ -8,19 +8,21 @@
  */
 int main(void)
 {
-int i, j;
-for (i = 48 ; i <= 56 ; i++)
-{
-for (j = 49 ; i <= 57 ; j++)
-putchar(i);
-if (j > i)
-{
-putchar(i);
-putchar(j);
-if (i != 56 || j != 57)
-putchar('.');
+int di1 = 0, di2;
+while (di1 <= 9)
+{di2 = 0;
+while (di2 <= 9)
+{if (di1 != di2 && di1 < di2)
+{putchar(di1 + 48);
+putchar(di2 + 48);
+if (di1 + di2 != 17)
+{putchar(',');
 putchar(' ');
 }
+}
+di2++;
+}
+di1++;
 }
 putchar('\n');
 return (0);
