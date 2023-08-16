@@ -1,10 +1,9 @@
 #include "main.h"
+
 /**
- * print_alphabat - prints 10 times the alphabet.
- *
- * Return: Void.
+ * print_alphabet_x10 - Prints 10 times the alphabet.
  */
-void print_alphabat(void)
+void print_alphabet_x10(void)
 {
 int line;
 int alp;
