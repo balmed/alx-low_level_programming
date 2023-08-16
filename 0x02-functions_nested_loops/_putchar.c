@@ -1,5 +1,6 @@
+#include "main.h"
 #include <unistd.h>
-#include <stdio.h>
+
 /**
  * _putchar - Writes point
  * @c: The character to print
