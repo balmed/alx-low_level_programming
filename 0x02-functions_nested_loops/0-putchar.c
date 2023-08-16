@@ -2,7 +2,7 @@
 /**
  * main - Entry point
  *
- * Description: Prints all prototype.
+ * Description: Prints _putchar.
  *
  * Return: Always 0 (Success)
  */
@@ -16,5 +16,6 @@ _putchar('c');
 _putchar('h');
 _putchar('a');
 _putchar('r');
-return(0);
+_putchar('\n');
+return (0);
 }
