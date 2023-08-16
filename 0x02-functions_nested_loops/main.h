@@ -3,6 +3,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 int _putchar(char c);
-int print_alphabat(void);
+void print_alphabet(void);
 
 #endif
