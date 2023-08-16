@@ -7,11 +7,13 @@
 void print_alphabat(void)
 {
 int line;
-char ch;
+int alp;
 for (line = 0 ; line <= 9 ; line++)
 {
-for (ch = 'a' ; ch <= 'z' ; ch++)
-_putchar(ch);
+for (alp = 97 ; alp <= 122 ; alp++)
+{
+_putchar(alp);
+}
 _putchar('\n');
 }
 }
