@@ -6,9 +6,9 @@
  * Return: On success 1.
  * On error, 0 for any else.
  */
-int _isdigit(int c) 
+int _isdigit(int c)
 {
-if (c >= 48 && c <= 57)
+if (c >= '0' && c <= '9')
 {
 return (1);
 }
