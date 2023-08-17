@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _putchar - multiplies two integers
+ * mul - multiplies two integers
  * @a: The value to print
  * @b: The vale to print
  *
