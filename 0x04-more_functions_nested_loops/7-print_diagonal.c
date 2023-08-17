@@ -1,9 +1,9 @@
 #include "main.h"
 /**
  * print_diagonal - draws a diagonal line on the terminal
- * @c: The character to print
+ * @n: The character to print
  *
- * Return: draws diagonal .
+ * Return: draws diagonal
  */
 void print_diagonal(int n)
 {
