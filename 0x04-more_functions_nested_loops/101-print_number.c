@@ -18,6 +18,6 @@ _putchar('_');
 b = b / 10;
 if (b != 0)
 print_number(b);
-_putchar((unsigned int) n % 10 + '0');
+_putchar((unsigned int)n % 10 + '0');
 }
 
