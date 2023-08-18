@@ -1,31 +1,25 @@
 #include "main.h"
+#include <stdio.h>
+#include <math.h>
 /**
- * _putchar - Prints a triangle of sequares according parameter
- * @size:The size of the squares triangle
+ * main - Prints a triangle prime factor of the number
  *
- * Return: empty
+ * Return: Always 0 (Success)
  */
-void print_triangle(int size)
+int main(void)
 {
-int x, y, z;
-if (size <= 0)
+long x, maxf;
+long num = 612852475143;
+double sq = sqrt( num );
+for (x = 1; x <= sq ; x++)
 {
-_putchar('\');
-}
-else
+if (num % x == 0)
 {
-for (x = 0; x < size; x++)
-{
-for (y = size - x; y > 1; y--)
-{
-_putchar(32);
-}
-for (z = 0;z <= x; z++)
-{
-_putchar(35);
-}
-_putchar('\n');
+maxf = num / x;
 }
 }
+printf("%lu\n", maxf);
+return (0);
 }
+
 
