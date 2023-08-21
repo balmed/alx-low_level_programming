@@ -1,10 +1,9 @@
 #include "main.h"
 /**
  * reset_to_98 - updates the value it points to to 98
- * @c: The pointer to an integer
+ * @n: The pointer to an integer
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: empty
  */
 void reset_to_98(int *n)
 {
