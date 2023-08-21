@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _putchar - swaps the values of two integers
+ * swap_int - swaps the values of two integers
  * @a: input parameter 1
  * @b: input parameter 1
  *
