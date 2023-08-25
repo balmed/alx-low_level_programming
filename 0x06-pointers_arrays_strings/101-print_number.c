@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_number - prints an integer.
+ * print_number - prints numbers character.
  * @n: parameter integer.
  *
  * Return: Always 0 (Success).
