@@ -11,7 +11,7 @@ unsigned int t;
 t = n;
 if (n < 0)
 {
-_putchar('_');
+_putchar('-');
 t = -n;
 }
 if (t / 10 != 0)
