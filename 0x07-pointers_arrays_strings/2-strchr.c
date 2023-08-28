@@ -1,23 +1,22 @@
 #include "main.h"
 /**
- * _strspn - The length of a prefix substring.
- * @s: String.
- * @accept: Bytes.
+ * *_strchr - locates a character in a string.
+ * @s: Pointer to put the constant.
+ * @c: Constant.
  *
- * Return: Unisgned to the resulting (i).
+ * Return: Pointer to the resulting.
  */
-unsigned int _strspn(char *s, char *accept)
+char *_strchr(char *s, char c)
 {
-unsigned int i, j;
-for (i = 0 ; s[i] != '\0' ; i++)
+int i;
+for (i = 0 ; s[i] >= '\0' ; i++)
 {
-for (j =0 ; accept[j] != s[i] ; j++)
+if (s[i] == c)
 {
-if (accept[j] == '\0')
-return (i);
+return (s + i);
 }
 }
-return (i);
+return ('\0');
 }
 
 
