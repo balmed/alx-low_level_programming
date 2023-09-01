@@ -1,6 +1,6 @@
 #include <stdio.h>
 /**
- * main - Entry point.
+ * main - prints its name, followed by a new line.
  * @argc: int.
  * @argv: list.
  * @n: Maximum number of bytes from src.
