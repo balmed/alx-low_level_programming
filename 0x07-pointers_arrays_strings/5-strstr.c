@@ -1,7 +1,7 @@
 #include "main.h"
-#include <stddef.h>
+#include <stdio.h>
 /**
- * *_strstr - locates a substring.
+ * *_strstr - Entry point.
  * @haystack: input.
  * @needle: input.
  *
@@ -9,7 +9,7 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-for (haystack = 0 ; *haystack != '\0' ; haystack++)
+for (; *haystack != '\0' ; haystack++)
 {
 char *one = haystack;
 char *two = needle;
