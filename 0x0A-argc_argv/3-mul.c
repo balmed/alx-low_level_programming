@@ -1,14 +1,20 @@
 #include <stdio.h>
 #include "main.h"
 /**
- * atoi - converts astring to an integer.
+ * atoi - converts a string to an integer.
  * @s: string to be converted.
  *
  * Return: That int converted from the string.
  */
 int atoi(const char *s)
 {
-int i = 0, d = 0, n = 0, len = 0, m = 0, dit = 0;
+int i, n, d, len, m, dit;
+i = 0;
+n = 0;
+d = 0;
+len = 0;
+m = 0;
+dit = 0;
 while (s[len] != '\0')
 len++;
 while (i < len && m == 0)
