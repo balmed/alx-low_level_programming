@@ -4,7 +4,7 @@
  * atoi - converts astring to an integer.
  * @s: string to be converted.
  *
- * Return: that int converted from the string.
+ * Return: That int converted from the string.
  */
 int atoi(const char *s)
 {
@@ -37,7 +37,7 @@ return (n);
  * @argc: number of arguments.
  * @argv: array of  argumants.
  *
- * Return:  Always 0 (Success).
+ * Return: Always 0 (Success).
  */
 int main(int argc, char *argv[])
 {
