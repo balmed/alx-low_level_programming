@@ -17,7 +17,9 @@ for (; str[size] != '\n' ; size++)
 ;
 pte = malloc(size * sizeof((*str) + 1));
 if (pte == 0)
+{
 return (NULL);
+}
 else
 {
 for (; i < size ; i++)
