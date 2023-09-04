@@ -9,7 +9,7 @@
 char *create_array(unsigned int size, char c)
 {
 char *pte = malloc(size);
-if (size == 0 && pte == 0)
+if (size == 0 || pte == 0)
 return (0);
 while (size--)
 pte[size] = c;
