@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * *_strdup - pointer to a newly allocated space in memory
+ * *_strdup - returns a pointer to a newly allocated space in memory
  * which contains a copy of the string given as a parameter.
- * @str: pointer string.
- *
- * Return: NULL if str = NULL.
+ * @str: string.
+ * 
+ * Return: 0
  */
 char *_strdup(char *str)
 {
@@ -14,7 +14,7 @@ if (str == NULL)
 return (NULL);
 for (; str[size] != '\n' ; size++)
 ;
-pte = malloc(size * sizeof((*str) + 1));
+pte = malloc(size * sizeof(*str) + 1);
 if (pte == 0)
 {
 return (NULL);
