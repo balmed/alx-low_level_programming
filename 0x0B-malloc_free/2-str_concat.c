@@ -17,7 +17,7 @@ if (s1 == NULL)
 s2 = "\0";
 size1 = strlen(s1);
 size2 = strlen(s2);
-pte = malloc((size1 + size2)*sizeof(char) + 1);
+pte = malloc((size1 + size2) *sizeof(char) + 1);
 if (pte == 0)
 return (0);
 for (i = 0 ; i <= size1 + size2 ; i++)
@@ -27,6 +27,6 @@ pte[i] = s1[i];
 else
 pte[i] = s2[i - size1];
 }
-pte[i] = "\0";
+pte[i] = '\0';
 return (pte);
 }
