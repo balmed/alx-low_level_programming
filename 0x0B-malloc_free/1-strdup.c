@@ -3,12 +3,12 @@
  * *_strdup - returns a pointer to a newly allocated space in memory
  * which contains a copy of the string given as a parameter.
  * @str: string.
- * 
+ *
  * Return: 0
  */
 char *_strdup(char *str)
 {
-int i = 0, size = 0;
+int i, size = 0;
 char *pte;
 if (str == NULL)
 return (NULL);
@@ -21,7 +21,7 @@ return (NULL);
 }
 else
 {
-for (; i < size ; i++)
+for (i = 0 ; i < size ; i++)
 pte[i] = str[i];
 }
 return (pte);
