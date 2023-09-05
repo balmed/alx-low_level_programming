@@ -27,6 +27,6 @@ pte[i] = s1[i];
 else
 pte[i] = s2[i - size1];
 }
-pte[i] = '\0';
+pte[i] = "\0";
 return (pte);
 }
