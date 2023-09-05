@@ -12,7 +12,7 @@ int i, size = 0;
 char *pte;
 if (str == NULL)
 return (NULL);
-for (; str[size] != '\n' ; size++)
+for (; str[size] != '\0' ; size++)
 ;
 pte = malloc(size * sizeof(*str) + 1);
 if (pte == 0)
