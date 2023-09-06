@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * wcount - counts the number of words.
+ * wcount - counts the number of words in a string.
  * @s: string
  *
- * Return: The resulting int (s).
+ * Return: int of number of words.
  */
 int wcount(char *s)
 {
@@ -23,15 +23,13 @@ return (n);
 }
 /**
  * strtow - Splits a string into words.
- * @str:string
+ * @str: The input string.
  *
- * Return: Pointer to the resulting string (dest).
+ * Return: An array of string, or NULL if allocation fails.
  */
 char **strtow(char *str)
 {
-int i, j, k, l;
-int cpt = 0;
-int n = 0;
+int i, j, k, l, cpt = 0, n = 0;
 char **pte;
 if (str == NULL || *str == '\0')
 return (NULL);
