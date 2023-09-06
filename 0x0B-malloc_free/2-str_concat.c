@@ -19,7 +19,7 @@ size1 = strlen(s1);
 size2 = strlen(s2);
 pte = malloc((size1 + size2) *sizeof(char) + 1);
 if (pte == NULL)
-return (0);
+return (NULL);
 for (i = 0 ; i <= size1 + size2 ; i++)
 {
 if (i < size1)
