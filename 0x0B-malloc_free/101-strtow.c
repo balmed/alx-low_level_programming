@@ -15,8 +15,7 @@ if (s[i] == ' ')
 if (s[i + 1] != ' ' && s[i + 1] != '\0')
 n++;
 }
-else
-if (i == 0)
+else if (i == 0)
 i++;
 }
 n++;
@@ -39,7 +38,7 @@ return (NULL);
 n = wcount(str);
 if (n == 1)
 return (NULL);
-pte = malloc(n *sizeof(char *));
+pte = (char **)malloc(n *sizeof(char *));
 if (pte == NULL)
 return (NULL);
 pte[n - 1] = NULL;
