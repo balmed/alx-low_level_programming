@@ -16,7 +16,7 @@ if (s[i + 1] != ' ' && s[i + 1] != '\0')
 n++;
 }
 else if (i == 0)
-i++;
+n++;
 }
 n++;
 return (n);
@@ -55,6 +55,7 @@ j--;
 if (pte[cpt] == NULL)
 {
 for (k = 0 ; k < cpt ; k++)
+free(pte[k]);
 free(pte[n - 1]);
 free(pte);
 return (NULL);
