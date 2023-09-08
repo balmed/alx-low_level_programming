@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * Mset - fills memory with a constant byte.
+ * *Mset - fills memory with a constant byte.
  * @s: pointer toput the constant.
  * @b: constant
  * @n: max byte  to use
@@ -18,10 +18,10 @@ return (ptr);
 }
 /**
  * *_calloc - allocates memory for an array.
- * @nmemb: numbre of array.
- * @size: size of byte.
+ * @nmemb: numbre length of array.
+ * @size: size of each element.
  *
- * Return: pointer to the allocated memory.
+ * Return: pointe.
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
