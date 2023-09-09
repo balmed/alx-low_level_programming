@@ -16,7 +16,7 @@ i++;
 }
 }
 /**
- * _atoi -convert a string to an integer.
+ * _atoi - convert a string to an integer.
  * @s:char type string.
  *
  * Return: integer.
@@ -51,7 +51,6 @@ unsigned long int resp, i, divisor = 1;
 for (i = 0 ; n / divisor > 9 ; i++, divisor *= 10)
 ;
 for (; divisor >= 1 ; n %= divisor, divisor /= 10)
-;
 {
 resp = n / divisor;
 _putchar('0' + resp);
@@ -64,7 +63,7 @@ _putchar('0' + resp);
  *
  * Return: 0.
  */
-int main(int argc, char *argv[])
+int main(int argc, char const *argv[])
 {
 (void)argc;
 if (argc != 3)
