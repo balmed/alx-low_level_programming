@@ -1,7 +1,7 @@
 #include "dog.h"
 #include <stdio.h>
 /**
- * print_dog -prints a  dog.
+ * print_dog - prints a dog.
  * @d: dog to initiale
  *
  * Return: empty.
