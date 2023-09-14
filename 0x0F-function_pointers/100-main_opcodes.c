@@ -8,7 +8,7 @@
  */
 int main(int argc, char **argv)
 {
-int *op = (int *)main;
+char *op = (char *)main;
 int a;
 if (argc != 2)
 printf("Error\n"), exit(1);
