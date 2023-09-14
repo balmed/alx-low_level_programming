@@ -44,7 +44,7 @@ int op_div(int a, int b)
 return (a / b);
 }
 /**
- * op_div - modulo tow numbres.
+ * op_mod - modulo tow numbres.
  * @a: Numbre 1.
  * @b: Numbre 2.
  *
@@ -54,3 +54,4 @@ int op_mod(int a, int b)
 {
 return (a % b);
 }
+
