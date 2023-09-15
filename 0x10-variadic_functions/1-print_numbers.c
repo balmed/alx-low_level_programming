@@ -15,11 +15,11 @@ va_list argd;
 unsigned int i;
 if (n == 0)
 {
-printf("\n");
+/* printf("\n"); */
 return;
 }
 va_start(argd, n);
 for (i = 0 ; i < n ; i++)
-printf("%d%s", va_arg(argd, int), i ? (separator ? separator : "") : "\n");
+printf("%d%s", va_arg(argd, int), (i || i == 0) ? (separator ? separator : "") : "\n");
 va_end(argd);
 }
