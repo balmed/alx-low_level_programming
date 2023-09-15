@@ -21,7 +21,7 @@ return;
 }
 va_start(argd, n);
 for (i = n - 1 ; i >= 0 ; i--)
-printf("%s%s",(ptr = va_arg(argd, char*)) ? ptr : "(nil)",
-	       	i ? (separator ? separator : "") : "\n");
+printf("%s%s", (ptr = va_arg(argd, char*)) ? ptr : "nil",
+i ? (separator ? separator : "") : "\n");
 va_end(argd);
 }
