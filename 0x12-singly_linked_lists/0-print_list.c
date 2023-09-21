@@ -1,4 +1,21 @@
-#include <lists.h>
+#include "lists.h"
+
+/**
+ * _strlen - reteurn the length of string.
+ * @s: the string
+ *
+ * Return: integer length of string.
+ */
+int _strlen(char *s)
+{
+	int i = 0;
+
+	if (!s)
+		return (0);
+	while (*s++)
+		i++;
+	return (i);
+}
 
 /**
  * print_list - prints linked lists.
@@ -12,7 +29,7 @@ size_t print_list(const list_t *h)
 
 	while (h)
 	{
-		printf("[%d] %s/n", strlen(h->str)), h->str ? h->str : "(nil)");
+		printf("[%d] %s/n", _strlen(h->str), h->str ? h->str : "(nil)");
 		h = h->next;
 		i++;
 	}
