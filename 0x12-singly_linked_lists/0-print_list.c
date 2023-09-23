@@ -1,10 +1,10 @@
 #include "lists.h"
 
 /**
- * _strlen - reteurn the length of string.
- * @s: the string
+ * _strlen - reteurn the length of a string.
+ * @s: Pointer the string
  *
- * Return: integer length of string.
+ * Return: return int.
  */
 int _strlen(char *s)
 {
@@ -18,10 +18,10 @@ int _strlen(char *s)
 }
 
 /**
- * print_list - prints linked lists.
- * @h: points to first node.
+ * print_list - Prints linked lists.
+ * @h: Points to first node.
  *
- * Return: the number of nodes.
+ * Return: The number of nodes.
  */
 size_t print_list(const list_t *h)
 {
