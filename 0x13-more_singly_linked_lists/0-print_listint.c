@@ -1,11 +1,11 @@
 #include "lists.h"
 #include <stdio.h>
-#include <stddef.h>
+
 /**
  * print_listint - Prints all the elements of a list.
- * @h: singly linked list
+ * @h: pointer to first node
  *
- * Return: The number of nodes (length).
+ * Return: The number of node.
  */
 size_t print_listint(const listint_t *h)
 {
