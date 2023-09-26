@@ -1,6 +1,5 @@
 #include "lists.h"
 
-
 /**
  * free_listint -  frees a list.
  * @head: address of pointer.
@@ -9,16 +8,12 @@
  */
 void free_listint(listint_t *head)
 {
-	listint_t *node, *temp;
+	listint_t *temp;
 
-	if (!head)
-		return;
-	node = *head;
-	while (node)
+	while (head)
 	{
-		temp = node;
-		node = node->next;
+		temp = head;
+		head = head->next;
 		free(temp);
 	}
-	*head = NULL;
 }
