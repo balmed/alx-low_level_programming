@@ -1,6 +1,8 @@
 #include "lists.h"
 #include <stdio.h>
 #include <stdlib.h>
+const listint_t **Rev_s(const listint_t **list,
+		size_t size, const listint_t *new);
 /**
  * Rev_s - location memory for an array.
  * @list: the old list.
@@ -16,6 +18,7 @@ const listint_t **Rev_s(const listint_t **list,
 	size_t i;
 
 	nlist = malloc(size * sizeof(listint_t));
+
 	if (nlist == NULL)
 	{
 		free(list);
