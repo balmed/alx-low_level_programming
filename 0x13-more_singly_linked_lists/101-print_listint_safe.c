@@ -1,23 +1,21 @@
 #include "lists.h"
 #include <stdio.h>
 #include <stdlib.h>
-const listint_t **Rev_s(const listint_t **list,
-		size_t size, const listint_t *new);
 /**
  * Rev_s - location memory for an array.
  * @list: the old list.
  * @size: size of the new list
- * @new: new node to add to the list
+ * @npt: new node to add to the list
  *
  * Return: pointer to the new list.
  */
 const listint_t **Rev_s(const listint_t **list,
-		size_t size, const listint_t *new)
+		size_t size, const listint_t *npt)
 {
 	const listint_t **nlist;
 	size_t i;
 
-	nlist = malloc(size * sizeof(listint_t));
+	nlist = malloc(size * sizeof(listint_t *));
 
 	if (nlist == NULL)
 	{
@@ -26,7 +24,7 @@ const listint_t **Rev_s(const listint_t **list,
 	}
 	for (i = 0 ; i < size - 1 ; i++)
 		nlist[i] = list[i];
-	nlist[i] = new;
+	nlist[i] = npt;
 	free(list);
 	return (nlist);
 }
