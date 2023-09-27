@@ -15,7 +15,7 @@ const listint_t **Rev_s(const listint_t **list,
 	const listint_t **nlist;
 	size_t i;
 
-	nlist = malloc(size * sizeof(listint_t *));
+	nlist = malloc(size * sizeof(listint_t));
 	if (nlist == NULL)
 	{
 		free(list);
