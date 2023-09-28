@@ -30,20 +30,20 @@ return (NULL);
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *next, *loop;
+	listint_t *next, *n_loop;
 	size_t len;
-	int l = 1;
+	int p = 1;
 
 	if (h == NULL || *h == NULL)
 		return (0);
-	loop = find_list(*h);
-	for (len = 0 ; (*h != loop || l) && *h != NULL ; *h = next)
+	n_loop = find_list(*h);
+	for (len = 0 ; (*h != n_loop || p) && *h != NULL ; *h = next)
 	{
 		len++;
 		next = (*h)->next;
-		if (*h == loop && l)
+		if (*h == n_loop && p)
 		{
-			if (loop == loop->next)
+			if (n_loop == n_loop->next)
 			{
 				free(*h);
 				break;
@@ -51,7 +51,7 @@ size_t free_listint_safe(listint_t **h)
 			len++;
 			next = next->next;
 			free((*h)->next);
-			l = 0;
+			p = 0;
 		}
 		free(*h);
 	}

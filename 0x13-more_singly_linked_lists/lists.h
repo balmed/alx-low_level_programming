@@ -16,7 +16,7 @@ typedef struct listint_s
     int n;
     struct listint_s *next;
 } listint_t;
-
+listint_t *find_list(listint_t *head);
 const listint_t **Rev_s(const listint_t **list,
 		size_t size, const listint_t *npt);
 int _putchar(char c);
