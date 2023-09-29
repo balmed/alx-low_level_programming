@@ -7,18 +7,20 @@
  */
 void print_binary(unsigned long int n)
 {
-	int bin = sizeof(n), fa = 0;
+	int i, size = 63, fa = 0;
+	unsigned long int cmp;
 
-	while (bin)
+	for (i = size ; i >= 0 ; i--)
 	{
-		if (n & 1L << --bin)
+		cmp = n >> i;
+		if (cmp & 1)
 		{
 			_putchar('1');
 			fa++;
 		}
 		else if (fa)
 			_putchar('0');
+	}
 		if (!fa)
 			_putchar('0');
-	}
 }
