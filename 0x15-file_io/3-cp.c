@@ -1,6 +1,6 @@
 #include "main.h"
 #include <string.h>
-
+#define PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
 #define READ_BUF_SIZE 1024
 /**
  * main - program.
@@ -20,8 +20,7 @@ int main(int ac, char **av)
 	form_fd = open(av[1], O_RDONLY);
 	if (form_fd == -1)
 	dprintf(STDERR_FILENO, "Error: Can't read from file%s\n", av[1]), exit(98);
-	to_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	to_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
 	if (to_fd == -1)
 	dprintf(STDERR_FILENO, "Error: Can't write to%s\n", av[2]), exit(99);
 	while ((b = read(form_fd, buf, READ_BUF_SIZE)) > 0)
