@@ -1,5 +1,26 @@
 #include "main.h"
 #include <elf.h>
+/**
+ * print_class - print the  class.
+ * @h: the ELF header struct.
+ */
+void print_class(Elf64_Ehdr h)
+{
+	printf(" Class:");
+			switch (h.e_ident[EI_CLASS])
+			{
+			case ELFCLASS32:
+			printf("ELF32");
+			break;
+			case ELFCLASS64:
+			printf("ELF64");
+			break;
+			case ELFCLASSNONE:
+			printf("Invalid");
+			break;
+			}
+			printf("\n");
+}
 
 /**
  * main - program.
@@ -29,6 +50,7 @@ int main(int ac, char **av)
 	}
 	else
 	dprintf(STDERR_FILENO, "Error: Can't ELF file %s\n", av[1]), exit(98);
+	print_class(h);
 	if (close(fd))
 		dprintf(STDERR_FILENO, "Error: Closeing file %d\n", fd), exit(98);
 	return (EXIT_SUCCESS);
