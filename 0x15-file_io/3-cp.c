@@ -1,5 +1,5 @@
 #include "main.h"
-#include <string.h>
+
 #define PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
 #define READ_BUF_SIZE 1024
 /**
@@ -11,30 +11,30 @@
  */
 int main(int ac, char **av)
 {
-	int form_fd = 0, to_fd = 0;
+	int file_from = 0, file_to = 0;
 	ssize_t b;
 	char buf[READ_BUF_SIZE];
 
 	if (ac != 3)
 	dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
-	form_fd = open(av[1], O_RDONLY);
-	if (form_fd == -1)
+	file_from = open(av[1], O_RDONLY);
+	if (file_from == -1)
 	dprintf(STDERR_FILENO, "Error: Can't read from file%s\n", av[1]), exit(98);
-	to_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
-	if (to_fd == -1)
+	file_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
+	if (file_to == -1)
 	dprintf(STDERR_FILENO, "Error: Can't write to%s\n", av[2]), exit(99);
-	while ((b = read(form_fd, buf, READ_BUF_SIZE)) > 0)
-		if (write(to_fd, buf, b) != b)
+	while ((b = read(file_from, buf, READ_BUF_SIZE)) > 0)
+		if (write(file_to, buf, b) != b)
 			dprintf(STDERR_FILENO, "Error: Can't write to%s\n", av[2]), exit(99);
 	if (b == -1)
 	dprintf(STDERR_FILENO, "Error: Can't read from file%s\n", av[1]), exit(98);
-	form_fd = close(form_fd);
-	to_fd = close(to_fd);
-	if (form_fd)
+	file_from = close(file_from);
+	file_to = close(file_to);
+	if (file_from)
 	dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE%d\n",
-			form_fd), exit(100);
-	if (to_fd)
+			file_from), exit(100);
+	if (file_to)
 		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE%d\n",
-				form_fd), exit(100);
+				file_from), exit(100);
 	return (EXIT_SUCCESS);
 }
