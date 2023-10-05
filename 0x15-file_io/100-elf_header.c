@@ -13,7 +13,6 @@ void print_version(Elf64_Ehdr h);
 void print_abi(Elf64_Ehdr h);
 void print_osabi(Elf64_Ehdr h);
 void print_type(Elf64_Ehdr h);
-void print_entry(Elf64_Ehdr h);
 
 
 /**
@@ -106,7 +105,6 @@ void print_version(Elf64_Ehdr h)
 		break;
 	}
 }
-
 /**
  * print_osabi - Prints the OS/ABI of an ELF header.
  * @h: the struct ELF header.
@@ -195,40 +193,6 @@ void print_type(Elf64_Ehdr h)
 		printf("<unknown: %x>\n", p[i]);
 	}
 }
-
-/**
- * print_entry - Prints the entry point of an ELF header.
- * @h: the struct ELF header
- */
-void print_entry(Elf64_Ehdr h)
-{
-	int i = 0, len = 0;
-	unsigned char *p = (unsigned char *)&h.e_entry;
-
-	printf("  Entry point address:               0x");
-
-	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
-	{
-		i = h.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
-		while (!p[i])
-			i--;
-		printf("%x", p[i--]);
-		for (; i >= 0 ; i--)
-			printf("%02x", p[i]);
-		printf("\n");
-	}
-	else
-	{
-		i = 0;
-		len = h.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
-		while (!p[i])
-			i++;
-		printf("%x", p[i++]);
-		for (; len >= i ; i++)
-			printf("%02x", p[i]);
-		printf("\n");
-	}
-}
 /**
  * main - program.
  * @ac: paramitre count.
@@ -238,35 +202,34 @@ void print_entry(Elf64_Ehdr h)
  */
 int main(int ac, char **av)
 {
-        int fd;
-        Elf64_Ehdr h;
-        ssize_t bt;
+	int fd;
+	Elf64_Ehdr h;
+	ssize_t bt;
 
-        if (ac != 2)
-                dprintf(STDERR_FILENO, "elf_header elf_filename\n"), exit(98);
-        fd = open(av[1], O_RDONLY);
-        if (fd == -1)
-                dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]), exit(98);
-        bt = read(fd, &h, sizeof(h));
-        if (bt < 1 || bt!= sizeof(h))
-                dprintf(STDERR_FILENO, "Error: Can't read form file %s\n", av[1]), exit(98);
-        if (h.e_ident[0] == 0x7f && h.e_ident[1] != 'E' && h.e_ident[2] == 'L' &&
-                        h.e_ident[3] == 'F')
-        {
-                printf("ELF Header: \n");
-        }
-        else
-        dprintf(STDERR_FILENO, "Error: Can't ELF file %s\n", av[1]), exit(98);
-        print_magic(h);
-        print_class(h);
+	if (ac != 2)
+		dprintf(STDERR_FILENO, "elf_header elf_filename\n"), exit(98);
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]), exit(98);
+	bt = read(fd, &h, sizeof(h));
+	if (bt < 1 || bt != sizeof(h))
+		dprintf(STDERR_FILENO, "Error: Can't read form file %s\n", av[1]), exit(98);
+	if (h.e_ident[0] == 0x7f && h.e_ident[1] == 'E' && h.e_ident[2] == 'L' &&
+			h.e_ident[3] == 'F')
+	{
+		printf("ELF Header: \n");
+	}
+	else
+		dprintf(STDERR_FILENO, "Error: Can't ELF file %s\n", av[1]), exit(98);
+	print_magic(h);
+	print_class(h);
 	print_data(h);
 	print_version(h);
 	print_abi(h);
 	print_osabi(h);
 	print_type(h);
-	print_entry(h);
 
-        if (close(fd))
-                dprintf(STDERR_FILENO, "Error: Closeing file %d\n", fd), exit(98);
-        return (EXIT_SUCCESS);
+	if (close(fd))
+		dprintf(STDERR_FILENO, "Error: Closeing file %d\n", fd), exit(98);
+	return (EXIT_SUCCESS);
 }
