@@ -1,14 +1,14 @@
 #include "main.h"
 #include <elf.h>
-void print_magic(unsigned char *e_ident);
-void print_class(unsigned char *e_ident);
+void print_magic(Elf64_Ehdr h);
+void print_class(Elf64_Ehdr h);
 /**
  * print_magic - Prints the magic numbers of an ELF header.
- * @e_ident: A pointer to an array containing the ELF magic numbers.
+ * @h: A pointer to an array containing the ELF magic numbers.
  *
  * Description: Magic numbers are separated by spaces.
  */
-void print_magic(unsigned char *e_ident)
+void print_magic(Elf64_Ehdr h)
 {
 	int index;
 
@@ -16,7 +16,7 @@ void print_magic(unsigned char *e_ident)
 
 	for (index = 0; index < EI_NIDENT; index++)
 	{
-		printf("%02x", e_ident[index]);
+		printf("%02x", h.e_ident[index]);
 
 		if (index == EI_NIDENT - 1)
 			printf("\n");
@@ -27,13 +27,13 @@ void print_magic(unsigned char *e_ident)
 
 /**
  * print_class - Prints the class of an ELF header.
- * @e_ident: A pointer to an array containing the ELF class.
+ * @h: A pointer to an array containing the ELF class.
  */
 
-void print_class(unsigned char *e_ident)
+void print_class(Elf64_Ehdr h)
 {
 	printf("  Class:                             ");
-	switch (e_ident[EI_CLASS])
+	switch (h.e_ident[EI_CLASS])
 	{
 	case ELFCLASSNONE:
 		printf("none\n");
@@ -45,7 +45,7 @@ void print_class(unsigned char *e_ident)
 		printf("ELF64\n");
 		break;
 	default:
-		printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+		printf("<unknown: %x>\n", h.e_ident[EI_CLASS]);
 	}
 }
 /**
@@ -58,7 +58,7 @@ void print_class(unsigned char *e_ident)
 int main(int ac, char **av)
 {
 	int fd;
-	Elf64_Ehdr *h;
+	Elf64_Ehdr h;
 	ssize_t b;
 
 	if (ac != 2)
@@ -66,18 +66,18 @@ int main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]), exit(98);
-	b = read(fd, &h, sizeof(Elf64_Ehdr));
-	if (b < 1 || b != sizeof(Elf64_Ehdr))
+	b = read(fd, &h, sizeof(h));
+	if (b < 1 || b != sizeof(h))
 		dprintf(STDERR_FILENO, "Error: Can't read form file %s\n", av[1]), exit(98);
-	if (h->e_ident[0] != 0x7f && h->e_ident[1] != 'E' && h->e_ident[2] != 'L' &&
-			h->e_ident[3] != 'F')
+	if (h.e_ident[0] == 0x7f && h.e_ident[1] != 'E' && h.e_ident[2] == 'L' &&
+			h.e_ident[3] == 'F')
 	{
 		printf("ELF Header: \n");
 	}
 	else
 	dprintf(STDERR_FILENO, "Error: Can't ELF file %s\n", av[1]), exit(98);
-	print_magic(h->e_ident);
-	print_class(h->e_ident);
+	print_magic(h);
+	print_class(h);
 
 	if (close(fd))
 		dprintf(STDERR_FILENO, "Error: Closeing file %d\n", fd), exit(98);
