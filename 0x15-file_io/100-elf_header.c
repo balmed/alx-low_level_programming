@@ -1,3 +1,4 @@
+#include "main.h"
 #include <elf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -5,14 +6,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-void print_magic(Elf64_Ehdr h);
-void print_class(Elf64_Ehdr h);
-void print_data(Elf64_Ehdr h);
-void print_version(Elf64_Ehdr h);
-void print_abi(Elf64_Ehdr h);
-void print_osabi(Elf64_Ehdr h);
-void print_type(Elf64_Ehdr h);
 
 
 /**
