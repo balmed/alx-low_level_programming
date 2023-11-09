@@ -2,7 +2,7 @@
 
 /**
  * print_dlistint -print list.
- * @h: pointer of head node 
+ * @h: pointer of head node
  *
  * Return: size of list.
  */
@@ -16,5 +16,5 @@ size_t print_dlistint(const dlistint_t *h)
 		h = h->next;
 		j++;
 	}
-	return j;
+	return (j);
 }
