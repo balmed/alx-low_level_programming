@@ -13,22 +13,22 @@ hash_node_t *funt_hash_n(const char *key, const char *value)
 
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
-		return NULL;
+		return (NULL);
 	node->key = strdup(key);
 	if (node->key == NULL)
 	{
 		free(node);
-		return NULL;
+		return (NULL);
 	}
 	node->value = strdup(value);
 	if (node->value == NULL)
 	{
 		free(node->key);
 		free(node);
-		return NULL;
+		return (NULL);
 	}
-	node->next = NULL;
-	return node;
+	node->next = (NULL);
+	return (node);
 }
 /**
  * hash_table_set - set a kay a value the table.
