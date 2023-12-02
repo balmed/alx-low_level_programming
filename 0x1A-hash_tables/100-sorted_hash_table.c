@@ -5,18 +5,18 @@
  *
  * Return: Pointer to the resulting (hash table).
  */
-hash_table_t *shash_table_create(unsigned long int size)
+shash_table_t *shash_table_create(unsigned long int size)
 {
-	hash_table_t *hash_table;
+	shash_table_t *hash_table;
 	unsigned long int i;
 
-	hash_table = malloc(sizeof(hash_table_t));
+	hash_table = malloc(sizeof(shash_table_t));
 	if (hash_table == NULL)
 		return (NULL);
 	hash_table = size;
-	hash_table = NULL;
-	hash_table = NULL;
-	hash_table->array = malloc(size * sizeof(hash_table_t));
+	hash_shead = NULL;
+	hash_stail = NULL;
+	hash_table->array = malloc(size * sizeof(shash_table_t));
 	if (hash_table->array == NULL)
 	{
 		free(hash_table);
@@ -33,11 +33,11 @@ hash_table_t *shash_table_create(unsigned long int size)
  *
  * Return: the new node; or NULL on failure.
  */
-hash_node_t *funt_shash_n(const char *key, const char *value)
+shash_node_t *funt_shash_n(const char *key, const char *value)
 {
-	hash_node_t *node;
+	shash_node_t *node;
 
-	node = malloc(sizeof(hash_node_t));
+	node = malloc(sizeof(shash_node_t));
 	if (node == NULL)
 		return (NULL);
 	node->key = strdup(key);
@@ -67,7 +67,7 @@ hash_node_t *funt_shash_n(const char *key, const char *value)
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
-	hash_node_t *hash_node, *tmp;
+	shash_node_t *hash_node, *tmp;
 	char *new_value;
 
 	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
@@ -140,10 +140,10 @@ void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
  *
  * Return: value and key, or NULL if key cannot be found.
  */
-char *shash_table_get(const shash_table_t *ht, const char *key)
+char *shash_table_set(const shash_table_t *ht, const char *key)
 {
 	unsigned long int i;
-	hash_node_t *tp;
+	shash_node_t *tp;
 
 	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
 			key == NULL || strlen(key) == 0)
