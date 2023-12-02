@@ -9,7 +9,7 @@ hash_table_t *shash_table_create(unsigned long int size)
 {
 	hash_table_t *hash_table;
 	unsigned long int i;
-	
+
 	hash_table = malloc(sizeof(hash_table_t));
 	if (hash_table == NULL)
 		return (NULL);
@@ -36,7 +36,7 @@ hash_table_t *shash_table_create(unsigned long int size)
 hash_node_t *funt_shash_n(const char *key, const char *value)
 {
 	hash_node_t *node;
-	
+
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
 		return (NULL);
@@ -69,6 +69,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	unsigned long int index;
 	hash_node_t *hash_node, *tmp;
 	char *new_value;
+
 	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
 			key == NULL || strlen(key) == 0 || value == NULL)
 		return (0);
@@ -105,7 +106,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
 {
 	shash_node_t *tp;
-	
+
 	if (table->shead == NULL && table->stail == NULL)
 	{
 		table->shead = table->stail = node;
@@ -143,7 +144,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	unsigned long int i;
 	hash_node_t *tp;
-	
+
 	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
 			key == NULL || strlen(key) == 0)
 		return (NULL);
@@ -168,7 +169,7 @@ void shash_table_print(const shash_table_t *ht)
 	unsigned long int i;
 	hash_node_t *tp;
 	char lap = 0;
-	
+
 	if (ht == NULL || ht->array == NULL)
 		return;
 	printf("{");
@@ -193,7 +194,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 {
 	hash_node_t *tp;
 	char lap = 0;
-	
+
 	if (ht == NULL || ht->array == NULL)
 		return;
 	printf("{");
@@ -218,6 +219,7 @@ void shash_table_delete(shash_table_t *ht)
 {
 	unsigned long int i;
 	shash_node_t *next;
+
 	if (ht == NULL || ht->array == NULL || ht->size == 0)
 		return;
 	for (i = 0 ; i < ht->size ; i++)
