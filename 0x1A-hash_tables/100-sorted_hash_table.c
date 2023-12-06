@@ -13,10 +13,10 @@ shash_table_t *shash_table_create(unsigned long int size)
 	hash_table = malloc(sizeof(shash_table_t));
 	if (hash_table == NULL)
 		return (NULL);
-	hash_table = size;
-	hash_shead = NULL;
-	hash_stail = NULL;
-	hash_table->array = malloc(size * sizeof(shash_table_t));
+	hash_table->size = size;
+	hash_table->shead = NULL;
+	hash_table->stail = NULL;
+	hash_table->array = malloc(size * sizeof(shash_node_t));
 	if (hash_table->array == NULL)
 	{
 		free(hash_table);
@@ -57,7 +57,41 @@ shash_node_t *funt_shash_n(const char *key, const char *value)
 	return (node);
 }
 /**
- * hash_table_set - set a kay a value the table.
+ * add_to_sorted_list - add the table.
+ * @table: hash table to add elemet.
+ * @node: key for the data.
+ *
+ * Return: empty
+ */
+void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
+{
+	shash_node_t *tp;
+
+	if (table->shead == NULL && table->stail == NULL)
+	{
+		table->shead = table->stail = node;
+		return;
+	}
+	tp = table->shead;
+	while (tp != NULL)
+	{
+		if (strcmp(node->key, tp->key) < 0)
+		{
+			node->snext = tp;
+			node->sprev = tp->sprev;
+			tp->sprev = node;
+			if (node->sprev != NULL)
+				node->sprev->snext = node;
+			else
+				table->shead = node;
+			return;
+		}
+		tp = tp->snext;
+	}
+	node->sprev = table->stail;
+}
+/**
+ * shash_table_set - set a kay a value the table.
  * @ht: hash table to add elemet.
  * @key: key for the data.
  * @value: data to store.
@@ -96,51 +130,15 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	add_to_sorted_list(ht, hash_node);
 	return (1);
 }
-/**
- * add_to_sorted_list - add the table.
- * @table: hash table to add elemet.
- * @node: key for the data.
- *
- * Return: empty
- */
-void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
-{
-	shash_node_t *tp;
-
-	if (table->shead == NULL && table->stail == NULL)
-	{
-		table->shead = table->stail = node;
-		return;
-	}
-	tp = table->shead;
-	while (tp != NULL)
-	{
-		if (strcmp(node->key, tp->key) < 0)
-		{
-			node->snext = tp;
-			node->sprev = tp->sprev;
-			tp->sprev = node;
-			if (node->sprev != NULL)
-				node->sprev->snext = node;
-			else
-				table->shead = node;
-			return;
-		}
-		tp = tp->snext;
-	}
-	node->sprev = table->stail;
-	table->stail->snext = node;
-	table->stail = node;
-}
 #include "hash_tables.h"
 /**
- * hash_table_get - retrieves a value and key.
+ * shash_table_get - retrieves a value and key.
  * @ht: hast table to print.
  * @key: key hast table
  *
  * Return: value and key, or NULL if key cannot be found.
  */
-char *shash_table_set(const shash_table_t *ht, const char *key)
+char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	unsigned long int i;
 	shash_node_t *tp;
@@ -158,6 +156,7 @@ char *shash_table_set(const shash_table_t *ht, const char *key)
 	}
 	return (NULL);
 }
+#include "hash_tables.h"
 /**
  * shash_table_print - print hash table.
  * @ht: hast table to print.
@@ -166,8 +165,7 @@ char *shash_table_set(const shash_table_t *ht, const char *key)
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	unsigned long int i;
-	hash_node_t *tp;
+	shash_node_t *tp;
 	char lap = 0;
 
 	if (ht == NULL || ht->array == NULL)
@@ -185,14 +183,14 @@ void shash_table_print(const shash_table_t *ht)
 	printf("}\n");
 }
 /**
- * shash_table_print_rev - print hash table.
+ * shash_table_print_rev - print hash table in reverse.
  * @ht: hast table to print.
  *
  * Return: empty
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	hash_node_t *tp;
+	shash_node_t *tp;
 	char lap = 0;
 
 	if (ht == NULL || ht->array == NULL)
